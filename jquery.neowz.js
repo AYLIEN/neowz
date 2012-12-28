@@ -61,7 +61,7 @@
             var html = '<div id="neowz-header"><div id="neowz-ticker"><ul></ul></div><div class="close"><a href="#"><img src="img/close.png"></a></div></div><div id="neowz-frame-container"><iframe id="neowz-frame" sandbox="allow-forms allow-scripts allow-same-origin"></iframe></div><div id="neowz-next-container"><a href="#"><img src="img/next.png"></a></div><div id="neowz-previous-container"><a href="#"><img src="img/prev.png"></a></div><div id="neowz-loading"></div>';
             $el.html(html);
 
-            $('body').height(initialWinHeight);
+            $('body').height(initialWinHeight).css({overflow:'hidden'});
 
             fixFrameHeight();
             fixTickerWidth();
@@ -248,7 +248,7 @@
                 // Add code to restore the element to its original state...
                 $el.removeAttr('style').children().remove();
                 $el.remove();
-                $('body').height(initialBodyHeight);
+                $('body').height(initialBodyHeight).css({overflow:'auto'});
                 document.title = initialTitle;
 
                 hook('onDestroy');
