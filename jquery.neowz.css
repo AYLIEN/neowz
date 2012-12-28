@@ -21,6 +21,9 @@ table,div#neowz caption,div#neowz tbody,div#neowz tfoot,div#neowz thead,div#neow
 	direction: ltr;
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: normal;
+	opacity: 1;
+	-webkit-font-smoothing: auto;
+	line-height: 11px;
 }
 div#neowz ol, ul {
 	list-style:none;
@@ -91,15 +94,37 @@ div#neowz-header div#neowz-ticker ul li span {
 	font-size: 10px !important;
 	margin-left: 2px !important;
 	margin-top: 2px !important;
+	border: 0 !important;
+	direction: ltr !important;
+	display: inline !important;
+	font-family: Arial, Helvetica, sans-serif !important;
+	font-weight: normal !important;
+	height: auto !important;
+	line-height: 10px !important;
+	margin-top: 2px 0px 0px 2px !important;
+	padding: 0 !important;
+	text-align: left !important;
+	vertical-align: baseline !important;
+	white-space: nowrap !important;
+	width: auto !important;	
 }
 div#neowz-header div#neowz-ticker ul li h4 {
 	font-size: 11px !important;
 	font-family: Arial, Helvetica, sans-serif !important;
 	font-weight: bold !important;
-	color: #555 !important;
 	margin:0 !important;
 	padding:0 !important;
 	line-height: 16px !important;	
+	border: 0 !important;
+	color: #555 !important;
+	direction: ltr !important;
+	display: block !important;
+	float: none !important;
+	height: 17px !important;
+	text-align: left !important;
+	vertical-align: baseline !important;
+	white-space: nowrap !important;
+	width: 100% !important;	
 }	
 div#neowz-header div#neowz-ticker ul li h4 img {
 	width: 16px !important;
@@ -125,6 +150,7 @@ div#neowz-header div.close {
 	top: 0 !important;
 	height: 100% !important;
 	width: 50px !important;	
+	opacity: 0.8 !important;
 }
 div#neowz-header div.close a {
 	text-decoration: none !important;
