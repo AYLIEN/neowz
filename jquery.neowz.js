@@ -22,6 +22,9 @@
         var initialWinHeight = $(window).height();
         var initialBodyHeight = $('body').height();
 
+        // Preserve page title
+        var initialTitle = document.title;
+
         /**
          * Initialize plugin.
          */
@@ -246,6 +249,7 @@
                 $el.removeAttr('style').children().remove();
                 $el.remove();
                 $('body').height(initialBodyHeight);
+                document.title = initialTitle;
 
                 hook('onDestroy');
             });
