@@ -108,7 +108,7 @@
                     window.feed = feed;
                     for (var i in feed.items) {
                       var title = feed.items[i].title;
-                      var link = (URI(feed.items[i].id).domain() !== '') ? 
+                      var link = ($.url(feed.items[i].id).attr('protocol') !== '') ? 
                                     feed.items[i].id :
                                     feed.items[i].link;
                       var pubDate = feed.items[i].updated;
@@ -195,7 +195,7 @@
         function addStoryToTicker(story) {
             var title = (story.title.length > 58) ? story.title.substr(0, 56) + '...' : story.title;
             title = '<a href="#">' + title + '</a>';
-            var link = URI(story.link).domain();
+            var link = $.url(story.link).attr('host').replace(/www\./g, "");
             var favicon = "http://www.google.com/s2/u/0/favicons?domain=" + link;
             var timestamp = new Date(Date.parse(story.pubDate)).toISOString();//new Date.parse(story.pubDate).toISOString().replace(/\.000/g, "");
 
