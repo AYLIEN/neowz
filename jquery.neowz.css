@@ -1,0 +1,211 @@
+/* reset all elements inside #neowz div */
+div#neowz html,div#neowz body,div#neowz div,div#neowz span,div#neowz applet,div#neowz object,div#neowz iframe,div#neowz
+h1,div#neowz h2,div#neowz h3,div#neowz h4,div#neowz h5,div#neowz h6,div#neowz p,div#neowz blockquote,div#neowz pre,div#neowz
+a,div#neowz abbr,div#neowz acronym,div#neowz address,div#neowz big,div#neowz cite,div#neowz code,div#neowz
+del,div#neowz dfn,div#neowz em,div#neowz font,div#neowz img,div#neowz ins,div#neowz kbd,div#neowz q,div#neowz s,div#neowz samp,div#neowz
+small,div#neowz strike,div#neowz strong,div#neowz sub,div#neowz sup,div#neowz tt,div#neowz var,div#neowz
+b,div#neowz u,div#neowz i,div#neowz center,div#neowz
+dl,div#neowz dt,div#neowz dd,div#neowz ol,div#neowz ul,div#neowz li,div#neowz
+fieldset,div#neowz form,div#neowz label,div#neowz legend,div#neowz
+table,div#neowz caption,div#neowz tbody,div#neowz tfoot,div#neowz thead,div#neowz tr,div#neowz th,div#neowz td {
+	margin:0;
+	padding:0;
+	border:0;
+	outline:0;
+	font-size:100%;
+	vertical-align:baseline;
+	background:transparent;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0; 
+	border-radius: 0;
+	direction: ltr;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+}
+div#neowz ol, ul {
+	list-style:none;
+}
+div#neowz hr { display:none }
+div#neowz blockquote, div#neowz q {
+	quotes:none;
+}
+div#neowz img, div#neowz li, div#neowz ul {
+	display: inline;
+}
+
+/* plugin styles */
+div#neowz {
+	margin: 0 !important;
+	padding: 0 !important;
+	position: absolute !important;
+	background-color: white !important;
+}
+div#neowz-header {
+	background-color: #EFEFEF !important;
+	border-top: 5px solid #5192FB !important;
+	width: 100% !important;
+	height: 50px !important;	
+	-moz-box-shadow: 0px 0px 12px #555 !important;
+	-webkit-box-shadow: 0px 0px 12px #555 !important;
+	box-shadow: 0px 0px 12px #555 !important;
+	position: fixed !important;
+}
+div#neowz-header div#neowz-ticker {
+	width: 96%;
+	height: 100% !important;
+	position: relative !important;
+	overflow-x: hidden !important;
+	overflow-y: hidden !important;	
+	border-right: 1px solid #ccc;
+}
+div#neowz-header div#neowz-ticker ul {
+	height: 100% !important;
+	float: left !important;
+	margin-right: -999em !important;
+	white-space: nowrap !important;
+	list-style: none !important;
+}
+div#neowz-header div#neowz-ticker ul li {
+	float: left !important;
+	background-color: #F6F6F6 !important;
+	height: 100% !important;
+	font-size: 11px !important;
+	font-family: Arial, Helvetica, sans-serif !important;
+	margin-left: 4px !important;
+	padding: 0 4px !important;
+	color: black !important;	
+	display: inline !important;
+	overflow: hidden !important;
+	width: 310px !important;
+	border-left: 2px solid #ddd;
+}
+div#neowz-header div#neowz-ticker ul li:first-child {
+	margin-left: 0 !important;
+}
+div#neowz-header div#neowz-ticker ul li:hover {
+	background-color: #FAFAFA !important;
+	cursor: pointer !important;
+}
+div#neowz-header div#neowz-ticker ul li span {
+	color: #888 !important;
+	font-size: 10px !important;
+	margin-left: 2px !important;
+	margin-top: 2px !important;
+}
+div#neowz-header div#neowz-ticker ul li h4 {
+	font-size: 11px !important;
+	font-family: Arial, Helvetica, sans-serif !important;
+	font-weight: bold !important;
+	color: #555 !important;
+	margin:0 !important;
+	padding:0 !important;
+	line-height: 16px !important;	
+}	
+div#neowz-header div#neowz-ticker ul li h4 img {
+	width: 16px !important;
+	height: 16px !important;
+	line-height: 16px !important;
+	vertical-align: middle !important;
+	margin-right: 2px !important;
+}
+div#neowz-header div#neowz-ticker ul li a {
+	color: blue !important;
+	text-decoration: none !important;
+	font-weight: bold !important;
+}
+div#neowz-header div#neowz-ticker ul li a:hover {
+	text-decoration: none !important;
+}
+div#neowz-header div#neowz-ticker ul li.current {
+	background-color: white !important;
+}
+div#neowz-header div.close {
+	position: absolute !important;
+	right: 0 !important;
+	top: 0 !important;
+	height: 100% !important;
+	width: 50px !important;	
+}
+div#neowz-header div.close a {
+	text-decoration: none !important;
+	cursor: pointer !important;
+	height: 38px !important;
+	width: 48px !important;
+	display: block !important;
+	margin-left: 7px !important;
+	margin-top: 6px !important; 
+}
+div#neowz-header div.close:hover {
+	background-color: white !important;
+}
+div#neowz-header div.close a img {
+	height: 38px !important;
+	width: 38px !important;
+}
+div#neowz-frame-container {
+	height: 100%;
+	width: 100% !important;
+	margin-top: 50px !important;
+}
+iframe#neowz-frame {
+	width: 100% !important;
+	height: 100% !important;
+}
+div#neowz-next-container, div#neowz-previous-container {
+	height: 60px !important;
+	width: 50px !important;
+	top: 45% !important;
+	position: fixed !important;
+}
+div#neowz-next-container:hover, div#neowz-previous-container:hover {
+	width: 65px !important;
+}
+div#neowz-next-container a , div#neowz-previous-container a {
+	text-decoration: none !important;
+	cursor: pointer !important;
+	height: 60px !important;
+	width: 50px !important;
+	display: block !important; 
+	background-color: #5192FB !important;	
+	opacity: 0.8 !important;
+}
+div#neowz-next-container a:hover , div#neowz-previous-container a:hover {
+	background-color: #748baf !important;
+	width: 65px !important;
+	opacity: 1 !important;
+}
+div#neowz-next-container a img {
+	margin: 0;
+	padding: 0;	
+	margin-top: 6px !important;
+	margin-left: 7px !important;
+	height: 46px;
+	width: 31px;
+}
+div#neowz-previous-container a img {
+	margin: 0;
+	padding: 0;	
+	margin-top: 6px !important;
+	margin-right: 7px !important;
+	float: right !important;
+	height: 46px;
+	width: 31px;
+}
+div#neowz-next-container {
+	right:0 !important;
+}
+div#neowz-previous-container {
+	left:0 !important;
+}
+div#neowz-loading {
+	position: absolute !important;
+	background-color: rgba(0,0,0,0.4) !important;
+	-moz-border-radius: 8px !important; /* Firefox */
+  	-webkit-border-radius: 8px !important; /* Safari, Chrome */
+  	border-radius: 8px !important; /* CSS3 */
+	height: 40px !important;
+	width: 60px !important;
+	background-image: url(img/loading.gif) !important;
+	background-position: center center !important;
+	background-repeat: no-repeat !important;
+}

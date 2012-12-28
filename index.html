@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Neowz</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="reset.css">
+		<link rel="stylesheet" href="jquery.neowz.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="lib/jquery.timeago.js"></script>
+		<script src="lib/uri.js"></script>
+		<script src="lib/jquery.scrollTo-1.4.3.1-min.js"></script>
+		<script src="lib/jquery.jfeed.js"></script>
+		<script src="jquery.neowz.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				/* Usage with custom stories: */
+				/*
+				stories = [
+							{title:'Sam\'s "Casablanca" piano sells for $602,500 at auction', link: 'http://www.reuters.com/article/2012/12/15/entertainment-us-auction-casablanca-idUSBRE8BE01L20121215?feedType=RSS&amp;feedName=artsNews',pubDate:'Fri, 14 Dec 2012 20:09:49 -0500'},
+							{title:'Exhibition celebrates millennium of Russian-German ties',link: 'http://www.reuters.com/article/2012/12/12/us-germany-russia-exhibition-idUSBRE8BB1AD20121212?feedType=RSS&amp;feedName=artsNews',pubDate: 'Wed, 12 Dec 2012 12:20:00 -0500'},
+							{title:'Rare "Metropolis" poster fetches high price in U.S. auction',link: 'http://www.reuters.com/article/2012/12/13/us-metropolis-poster-idUSBRE8BC1KT20121213?feedType=RSS&amp;feedName=artsNews',pubDate: 'Thu, 13 Dec 2012 18:43:52 -0500'},
+							{title:'Shia LaBeouf to make Broadway debut in "Orphans"',link: 'http://www.reuters.com/article/2012/12/12/entertainment-us-stage-shialabeouf-idUSBRE8BA1GF20121212?feedType=RSS&amp;feedName=artsNews',pubDate: 'Tue, 11 Dec 2012 21:12:35 -0500'},
+							{
+								title:"US small businesses and the fiscal cliff", link:"http://www.bbc.co.uk/news/business-20843288#sa-ns_mchannel=rss&amp;ns_source=PublicRSS20-sa",pubDate:"Thu, 27 Dec 2012 00:05:51 GMT"
+							},
+							{
+								title:"The UK year in pictures 2012", link:"http://www.bbc.co.uk/news/in-pictures-20757511#sa-ns_mchannel=rss&amp;ns_source=PublicRSS20-sa",pubDate:"Thu, 27 Dec 2012 04:16:45 GMT"
+							},
+							{
+								title:"Major art controversies of 2012", link:"http://www.bbc.co.uk/news/entertainment-arts-20449415#sa-ns_mchannel=rss&amp;ns_source=PublicRSS20-sa",pubDate:"Thu, 27 Dec 2012 03:30:01 GMT"
+							},
+							{
+								title:"Fears for Sri Lanka's outspoken Leader", link:"http://www.bbc.co.uk/news/world-asia-20676344#sa-ns_mchannel=rss&amp;ns_source=PublicRSS20-sa",pubDate:"Thu, 27 Dec 2012 00:30:55 GMT"
+							}
+						  ];
+				$("#news").neowz({stories:stories});
+				*/
+				
+				/* Usage with an RSS feed as input: */
+				//$("#news").neowz({rss:"http://feeds.bbci.co.uk/news/rss.xml"});
+
+				$("button").click(function(){
+					$("#news").neowz({rss:$("#rss").val()});
+				});
+			});
+		</script>		
+		<style type="text/css">
+			body {
+				height: 1000px;
+			}
+			input {
+				width: 360px;
+				height: 20px;
+				font-size: 12px;				
+				border-radius: 0;
+			}
+			button {
+				height: 26px;
+				width: 50px;
+				background: #333;
+				border-radius: 0;
+				border:0;
+				color: white;
+				cursor: pointer;
+			}
+			button:hover {
+				background: #666;
+			}
+			img {
+				display: block;
+				height: 400px;
+				margin-left: -70px;
+			}
+			h1 {
+				font-size: 70px;
+			}
+		</style>
+	</head>
+	<body>
+		<div align="center">
+			<img src="images/grumpy.png"/>
+			<h1>Neowz</h1>
+			RSS Link: <input type="text" id="rss" value="http://feeds.feedburner.com/hacker-news-feed-50?format=xml"/>
+			<button>Read!</button>
+		</div>
+		<div style="height: 100px; width: 100px;"><div id="news"></div></div>
+	</body>
+</html>
