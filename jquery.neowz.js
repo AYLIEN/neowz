@@ -58,7 +58,7 @@
                 'z-index': options.zIndex
             });
 
-            var html = '<div id="neowz-header"><div id="neowz-ticker"><ul></ul></div><div class="close"><a href="#"><img src="img/close.png"></a></div></div><div id="neowz-frame-container"><iframe id="neowz-frame" sandbox="allow-forms allow-scripts allow-same-origin"></iframe></div><div id="neowz-next-container"><a href="#"><img src="img/next.png"></a></div><div id="neowz-previous-container"><a href="#"><img src="img/prev.png"></a></div><div id="neowz-loading"></div>';
+            var html = $.tmpl(options.layoutTemplate,{});
             $el.html(html);
 
             $('body').height(initialWinHeight).css({overflow:'hidden'});
@@ -142,9 +142,9 @@
             $el.find("#neowz-ticker").scrollTo('li:eq(' + currentStoryIndex + ')', 500, function() {
                 try {
                     $el.find("#neowz-frame").attr('src', stories[currentStoryIndex].link);                    
-                    document.title = stories[currentStoryIndex].title;
+                    document.title = $.tmpl(options.titleTemplate,{Title:stories[currentStoryIndex].title}).text();
                 } catch (e) {
-                    console.log("Story does not have a link.");
+                    $.error("Neowz: story does not have a link.");
                 }
             });
 
@@ -194,13 +194,13 @@
 
         function addStoryToTicker(story) {
             var title = (story.title.length > 58) ? story.title.substr(0, 56) + '...' : story.title;
-            title = '<a href="#">' + title + '</a>';
             var link = $.url(story.link).attr('host').replace(/www\./g, "");
             var favicon = "http://www.google.com/s2/u/0/favicons?domain=" + link;
             var timestamp = new Date(Date.parse(story.pubDate)).toISOString();//new Date.parse(story.pubDate).toISOString().replace(/\.000/g, "");
 
-            var html = '<li><h4>' + title + '</h4><h4><img src="' + favicon + '">' + link + '</h4><span class="timeago" title="' + timestamp + '">' + timestamp + '</span></li>';
-            var li = $(html);
+            // var html = '<li><h4>' + title + '</h4><h4><img src="' + favicon + '">' + link + '</h4><span class="timeago" title="' + timestamp + '">' + timestamp + '</span></li>';
+            var li = $.tmpl(options.tickerItemLayout,{Title:title,Favicon:favicon,Link:link,Timestamp:timestamp});
+            // var li = $(html);
             $el.find("#neowz-ticker ul").append(li);
 
             // bind ticker-specific events
@@ -330,7 +330,10 @@
     $.fn[pluginName].defaults = {
         top: 0,
         left: 0,
-        zIndex: 1000
+        zIndex: 1000,
+        titleTemplate: "Neowz - ${Title}",
+        layoutTemplate: '<div id="neowz-header"><div id="neowz-ticker"><ul></ul></div><div class="close"><a href="#"><img src="img/close.png"></a></div></div><div id="neowz-frame-container"><iframe id="neowz-frame" sandbox="allow-forms allow-scripts allow-same-origin"></iframe></div><div id="neowz-next-container"><a href="#"><img src="img/next.png"></a></div><div id="neowz-previous-container"><a href="#"><img src="img/prev.png"></a></div><div id="neowz-loading"></div>',
+        tickerItemLayout: '<li><h4><a href="#">${Title}</a></h4><h4><img src="${Favicon}">${Link}</h4><span class="timeago" title="${Timestamp}">${Timestamp}</span></li>'
     };
 
 })(jQuery);
