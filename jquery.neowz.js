@@ -1,19 +1,13 @@
 /*
  *  Project: neowz
- *  Description: news reader
+ *  Description: RSS reader
  *  Author: parsaghaffari
- *  License: ?
+ *  License: GPL
  */
 ;(function($) {
     var pluginName = 'neowz';
 
-    /**
-     * Plugin object constructor.
-     * Implements the Revealing Module Pattern.
-     */
-
     function Plugin(element, options) {
-        // References to DOM and jQuery versions of element.
         var el = element;
         var $el = $(element);
 
@@ -31,7 +25,7 @@
         /**
          * Initialize plugin.
          */
-
+        
         function init() {
             //Add any initialization logic here...
             initCanvas();
@@ -47,7 +41,7 @@
             hook('onInit');
         }
 
-        // Private Methods
+        // --- Private Methods ---
         function initCanvas() {
             var neowz = $('<div id="neowz"></div>');
             $el.append(neowz);
@@ -213,9 +207,7 @@
             li.find("span.timeago").timeago();
         }
 
-        // Helper Functions (no side-effect)
-
-
+        // --- Helper Functions (no side-effect) ---
         function isValidStories(stories) {
             //TODO: implement
             return true;
@@ -332,8 +324,6 @@
     // passing an object literal, or after initialization:
     // $('#el').neowz('option', 'key', value);
     $.fn[pluginName].defaults = {
-        width: '100%',
-        height: '100%',
         top: 0,
         left: 0,
         zIndex: 1000
