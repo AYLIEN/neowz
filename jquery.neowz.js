@@ -193,14 +193,12 @@
         }
 
         function addStoryToTicker(story) {
-            var title = (story.title.length > 58) ? story.title.substr(0, 56) + '...' : story.title;
-            var link = $.url(story.link).attr('host').replace(/www\./g, "");
+            var title = (story.title.length > 56) ? story.title.substr(0, 53) + '...' : story.title;
+            var link = getDomain(story.link);
             var favicon = "http://www.google.com/s2/u/0/favicons?domain=" + link;
             var timestamp = new Date(Date.parse(story.pubDate)).toISOString();//new Date.parse(story.pubDate).toISOString().replace(/\.000/g, "");
 
-            // var html = '<li><h4>' + title + '</h4><h4><img src="' + favicon + '">' + link + '</h4><span class="timeago" title="' + timestamp + '">' + timestamp + '</span></li>';
             var li = $.tmpl(options.tickerItemLayout,{Title:title,Favicon:favicon,Link:link,Timestamp:timestamp});
-            // var li = $(html);
             $el.find("#neowz-ticker ul").append(li);
 
             // bind ticker-specific events
@@ -214,6 +212,17 @@
         function isValidStories(stories) {
             //TODO: implement
             return true;
+        }
+
+        function getDomain(url) {
+            var host = $.url(url).attr('host');
+            var ext = domainExtension(host);
+            var parts = host.replace(ext,"").split(".");
+            return parts[parts.length - 2] + "." + ext;          
+        }
+        
+        function domainExtension(url) {
+          return SecondLevelDomains.get(url) || url.match(/[^.]+$/i)[0];
         }
 
         /**
