@@ -48,7 +48,7 @@
         function initCanvas() {
             var neowz = $('<div id="neowz"></div>');
             $el.append(neowz);
-            $el = $el.find("#neowz");
+            $el = $el.find("#neowz"); // swap el with #neowz root element in the rest of the code
 
             $el.css({
                 height: $(window).height(),
@@ -63,13 +63,14 @@
 
             $('body').height(initialWinHeight).css({overflow:'hidden'});
 
-            fixFrameHeight();
+            fixFrameSize();
             fixTickerWidth();
             bindEvents();
         }
 
-        function fixFrameHeight() {
-          $el.find('#neowz-frame-container').height($(window).height() - 55);
+        function fixFrameSize() {
+          $el.find('#neowz-frame-container').height($(window).height() - 55).width($(window).width());
+          $el.find('#neowz-frame-container #neowz-frame').width($(window).width());
         }
 
         function fixTickerWidth() {
@@ -77,7 +78,7 @@
         }
 
         function bindEvents() {
-            $(window).bind("resize", fixFrameHeight);
+            $(window).bind("resize", fixFrameSize);
             $(window).bind("resize", fixTickerWidth);
             $el.find('#neowz-header .close a').bind('click', destroy);
             $el.find("#neowz-next-container a").bind('click', nextStory);
@@ -150,7 +151,7 @@
 
             showLoading();
             fixTickerWidth();
-            fixFrameHeight();
+            fixFrameSize();
         }
 
         function nextStory() {
@@ -220,7 +221,7 @@
             var parts = host.replace(ext,"").split(".");
             return parts[parts.length - 2] + "." + ext;          
         }
-        
+
         function domainExtension(url) {
           return SecondLevelDomains.get(url) || url.match(/[^.]+$/i)[0];
         }

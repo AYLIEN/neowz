@@ -174,7 +174,7 @@ div#neowz-frame-container {
 	margin-top: 50px !important;
 }
 iframe#neowz-frame {
-	width: 100% !important;
+	width: 100%;
 	height: 100% !important;
 }
 div#neowz-next-container, div#neowz-previous-container {
