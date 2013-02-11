@@ -21,10 +21,18 @@
 				/* Usage with custom stories: */
 				/*
 				stories = [
-							{title:'Sam\'s "Casablanca" piano sells for $602,500 at auction', link: 'http://www.reuters.com/article/2012/12/15/entertainment-us-auction-casablanca-idUSBRE8BE01L20121215?feedType=RSS&amp;feedName=artsNews',pubDate:'Fri, 14 Dec 2012 20:09:49 -0500'},
-							{title:'Exhibition celebrates millennium of Russian-German ties',link: 'http://www.reuters.com/article/2012/12/12/us-germany-russia-exhibition-idUSBRE8BB1AD20121212?feedType=RSS&amp;feedName=artsNews',pubDate: 'Wed, 12 Dec 2012 12:20:00 -0500'},
-							{title:'Rare "Metropolis" poster fetches high price in U.S. auction',link: 'http://www.reuters.com/article/2012/12/13/us-metropolis-poster-idUSBRE8BC1KT20121213?feedType=RSS&amp;feedName=artsNews',pubDate: 'Thu, 13 Dec 2012 18:43:52 -0500'},
-							{title:'Shia LaBeouf to make Broadway debut in "Orphans"',link: 'http://www.reuters.com/article/2012/12/12/entertainment-us-stage-shialabeouf-idUSBRE8BA1GF20121212?feedType=RSS&amp;feedName=artsNews',pubDate: 'Tue, 11 Dec 2012 21:12:35 -0500'},
+							{
+								title:'Sam\'s "Casablanca" piano sells for $602,500 at auction', link: 'http://www.reuters.com/article/2012/12/15/entertainment-us-auction-casablanca-idUSBRE8BE01L20121215?feedType=RSS&amp;feedName=artsNews',pubDate:'Fri, 14 Dec 2012 20:09:49 -0500'
+							},
+							{
+								title:'Exhibition celebrates millennium of Russian-German ties',link: 'http://www.reuters.com/article/2012/12/12/us-germany-russia-exhibition-idUSBRE8BB1AD20121212?feedType=RSS&amp;feedName=artsNews',pubDate: 'Wed, 12 Dec 2012 12:20:00 -0500'
+							},
+							{
+								title:'Rare "Metropolis" poster fetches high price in U.S. auction',link: 'http://www.reuters.com/article/2012/12/13/us-metropolis-poster-idUSBRE8BC1KT20121213?feedType=RSS&amp;feedName=artsNews',pubDate: 'Thu, 13 Dec 2012 18:43:52 -0500'
+							},
+							{
+								title:'Shia LaBeouf to make Broadway debut in "Orphans"',link: 'http://www.reuters.com/article/2012/12/12/entertainment-us-stage-shialabeouf-idUSBRE8BA1GF20121212?feedType=RSS&amp;feedName=artsNews',pubDate: 'Tue, 11 Dec 2012 21:12:35 -0500'
+							},
 							{
 								title:"US small businesses and the fiscal cliff", link:"http://www.bbc.co.uk/news/business-20843288#sa-ns_mchannel=rss&amp;ns_source=PublicRSS20-sa",pubDate:"Thu, 27 Dec 2012 00:05:51 GMT"
 							},
@@ -45,7 +53,7 @@
 				//$("#news").neowz({rss:"http://feeds.bbci.co.uk/news/rss.xml"});
 
 				$("button").click(function(){
-					$("#news").neowz({rss:$("#rss").val()});
+					$("#news").neowz({rss:$("#rss").val(),onClose:'hide'});
 				});
 			});
 		</script>		

@@ -3,6 +3,8 @@
  *  Description: RSS reader
  *  Author: parsaghaffari
  *  License: GPL
+ *  Based on this JQuery plugin boilerplate:
+ *  http://f6design.com/journal/2012/05/06/a-jquery-plugin-boilerplate/
  */
 ;(function($) {
     var pluginName = 'neowz';
@@ -80,14 +82,14 @@
         function bindEvents() {
             $(window).bind("resize", fixFrameSize);
             $(window).bind("resize", fixTickerWidth);
-            $el.find('#neowz-header .close a').bind('click', destroy);
+            $el.find('#neowz-header .close a').bind('click', close);
             $el.find("#neowz-next-container a").bind('click', nextStory);
             $el.find("#neowz-previous-container a").bind('click', previousStory);
             $el.find("#neowz-frame").load(hideLoading);
             $el.find("#neowz-frame").load(function(){$(this).scrollTo(0,0);});
 
             $(document).keyup(function(e) { // keystrokes
-                if (e.keyCode == 27) destroy(); // esc
+                if (e.keyCode == 27) close(); // esc
                 if (e.keyCode == 37) previousStory(); // left
                 if (e.keyCode == 39) nextStory(); // right
             });
@@ -209,6 +211,14 @@
             li.find("span.timeago").timeago();
         }
 
+        function close() {
+            if (options.onClose == 'hide') {
+                $el.hide();
+            } else {
+                destroy();
+            }
+        }
+
         // --- Helper Functions (no side-effect) ---
         function isValidStories(stories) {
             //TODO: implement
@@ -241,7 +251,7 @@
         }
 
         /**
-         * Destroy plugin.
+         * Destroys plugin.
          * Usage: $('#el').neowz('destroy');
          */
 
@@ -287,7 +297,8 @@
         // Expose methods of Plugin we wish to be public.
         return {
             option: option,
-            destroy: destroy
+            destroy: destroy,
+            jumpToStory: jumpToStory
         };
     }
 
@@ -328,6 +339,8 @@
                     // Pass options to Plugin constructor, and store Plugin
                     // instance in the elements jQuery data object.
                     $.data(this, 'plugin_' + pluginName, new Plugin(this, options));
+                } else {
+                    $(this).find('#neowz').show();
                 }
             });
         }
