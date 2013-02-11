@@ -98,7 +98,9 @@
         function initWithStories(storiez, element, options) {
             stories = storiez;
             for (var i in stories) {
-                addStoryToTicker(stories[i]);
+                if(stories.hasOwnProperty(i)){
+                    addStoryToTicker(stories[i]);
+                }
             }
             updateState();
         }
