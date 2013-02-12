@@ -86,7 +86,7 @@
             $el.find("#neowz-next-container a").bind('click', nextStory);
             $el.find("#neowz-previous-container a").bind('click', previousStory);
             $el.find("#neowz-frame").load(hideLoading);
-            $el.find("#neowz-frame").load(function(){$(this).scrollTo(0,0);});
+            $el.find("#neowz-frame").load(function(){$(this).scrollTo(0,0);});            
 
             $(document).keyup(function(e) { // keystrokes
                 if (e.keyCode == 27) close(); // esc
@@ -96,13 +96,7 @@
         }
 
         function initWithStories(storiez, element, options) {
-            stories = storiez;
-            for (var i in stories) {
-                if(stories.hasOwnProperty(i)){
-                    addStoryToTicker(stories[i]);
-                }
-            }
-            updateState();
+            addStories(storiez);
         }
 
         function initWithRSS(rss, element, options) {
@@ -128,6 +122,17 @@
             });
         }
 
+        function addStories(storiez) {
+            stories = $.merge(stories, storiez);
+
+            for (var i in storiez) {
+                if(stories.hasOwnProperty(i)){
+                    addStoryToTicker(storiez[i]);
+                }
+            }
+            updateState();
+        }
+
         function updateState() {
             if (currentStoryIndex == undefined) currentStoryIndex = 0;
             if (currentStoryIndex == 0) {
@@ -136,6 +141,8 @@
             } else if (currentStoryIndex == stories.length - 1) {
                 $el.find("#neowz-next-container").hide();
                 $el.find("#neowz-previous-container").show();
+                
+                hook('onLastStoryReached');                
             } else {
                 $el.find("#neowz-next-container").show();
                 $el.find("#neowz-previous-container").show();
@@ -160,23 +167,26 @@
 
         function nextStory() {
             if (currentStoryIndex < stories.length - 1) {
-                currentStoryIndex += 1;
-                updateState();
+                jumpToStory(currentStoryIndex + 1, "nextTriggered"); 
             }
             return false;
         }
 
         function previousStory() {
             if (currentStoryIndex > 0) {
-                currentStoryIndex -= 1;
-                updateState();
+                jumpToStory(currentStoryIndex - 1, "previousTriggered"); 
             }
             return false;
         }
 
-        function jumpToStory(index) {
+        function jumpToStory(index, event) {
             currentStoryIndex = index;
             updateState();
+            hook('onSeek',{
+                event: (event == "previousTriggered" || event == "nextTriggered") ? 
+                    event : "seeked"
+            });
+
             return false;
         }
 
@@ -195,6 +205,8 @@
             $el.find("#neowz-loading").css({
                 display: 'none'
             });
+
+            hook('onStoryLoaded',{index:currentStoryIndex});
         }
 
         function addStoryToTicker(story) {
@@ -219,6 +231,10 @@
             } else {
                 destroy();
             }
+        }
+
+        function getCurrentIndex() {
+            return currentStoryIndex;
         }
 
         // --- Helper Functions (no side-effect) ---
@@ -285,11 +301,11 @@
          * hook('hookName');
          */
 
-        function hook(hookName) {
+        function hook(hookName, data) {
             if (options[hookName] !== undefined) {
                 // Call the user defined function.
                 // Scope is set to the jQuery element we are operating on.
-                options[hookName].call(el);
+                options[hookName].call(el, data);
             }
         }
 
@@ -300,7 +316,9 @@
         return {
             option: option,
             destroy: destroy,
-            jumpToStory: jumpToStory
+            jumpToStory: jumpToStory,
+            getCurrentIndex: getCurrentIndex,
+            addStories: addStories
         };
     }
 
