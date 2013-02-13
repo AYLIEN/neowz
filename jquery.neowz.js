@@ -226,8 +226,8 @@
         }
 
         function close() {
-            if (options.onClose == 'hide') {
-                $el.hide();
+            if (typeof options.onClose == 'function') {
+                hook('onClose');
             } else {
                 destroy();
             }

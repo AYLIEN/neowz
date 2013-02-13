@@ -55,7 +55,9 @@
 				$("button").click(function(){
 					$("#news").neowz({
 						rss:$("#rss").val(),
-						onClose:'hide',
+						onClose: function(){
+							alert("close?");
+						},
 						onStoryLoaded: function(data) { 
 							alert("story loaded: "+data.index); 
 						},
